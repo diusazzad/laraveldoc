@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\database\queryBuilder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('/database/all-rows', [queryBuilder::class, 'index'])->name('database.querybuilder.allRowsFromATable');
+// Route::get('/database/single-row', [queryBuilder::class, 'singleRowFromATable'])->name('database.querybuilder.singleRowColumnFromATable');
+
+// Route::get('/database', [queryBuilder::class, 'showData'])->name('database.querybuilder.showData');
+
+Route::get('/database/{type}', [queryBuilder::class, 'getData'])
+     ->name('database.querybuilder.getData')
+     ->where('type', 'all-rows|single-row|column-values');
