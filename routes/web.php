@@ -25,5 +25,14 @@ Route::get('/', function () {
 // Route::get('/database', [queryBuilder::class, 'showData'])->name('database.querybuilder.showData');
 
 Route::get('/database/{type}', [queryBuilder::class, 'getData'])
-     ->name('database.querybuilder.getData')
-     ->where('type', 'all-rows|single-row|column-values');
+    ->name('database.querybuilder.getData')
+    ->where('type', 'all-rows|single-row|column-values');
+
+Route::get('/database/chunking-results', [queryBuilder::class, 'chunkingResults'])
+    ->name('database.chunkingResults');
+
+//  Streaming Results Lazily
+Route::get('/database/export-users-csv', [QueryBuilderController::class, 'exportUsersToCsv'])
+    ->name('database.exportUsersToCsv');
+// Aggregates
+Route::get('/database/aggregates', [queryBuilder::class,'aggregates'])->name('database.aggregates');

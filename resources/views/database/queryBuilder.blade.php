@@ -1,8 +1,10 @@
+<!-- Blade file: queryBuilder.blade.php -->
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>User List</title>
+    {{-- <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> --}}
     @vite('resources/css/app.css')
 </head>
 
@@ -10,9 +12,9 @@
 
     <div class="container">
         <h1>Retrieving All Rows From A Table</h1>
-        @if($type === 'all-rows')
+        @if ($type === 'all-rows')
             <div class="row">
-                @foreach($data as $row)
+                @foreach ($data as $row)
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
@@ -27,7 +29,7 @@
         @endif
 
         <h1>Retrieving A Single Row / Column From A Table</h1>
-        @if($type === 'single-row')
+        @if ($type === 'single-row')
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
@@ -42,19 +44,21 @@
         @endif
 
         <h1>Retrieving A List Of Column Values</h1>
-        @if($type === 'column-values')
+        @if ($type === 'column-values')
             <div class="row">
                 <div class="col-md-4">
                     <ul class="list-group">
-                        @foreach($data as $value)
+                        @foreach ($data as $value)
                             <li class="list-group-item">{{ $value }}</li>
                         @endforeach
                     </ul>
                 </div>
             </div>
         @endif
-    </div>
 
+
+
+    </div>
 
 </body>
 
