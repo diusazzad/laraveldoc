@@ -64,16 +64,7 @@
             "php-http/discovery": true
         }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.org"
-        },
-        {
-            "type": "composer",
-            "url": "https://repo.phpcomposer.com"
-        }
-    ],
+
     "minimum-stability": "stable",
     "prefer-stable": true
 }
