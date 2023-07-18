@@ -36,3 +36,10 @@ Route::get('/database/export-users-csv', [QueryBuilderController::class, 'export
     ->name('database.exportUsersToCsv');
 // Aggregates
 Route::get('/database/aggregates', [queryBuilder::class,'aggregates'])->name('database.aggregates');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('query_builer_tables', function (Blueprint $table) {
+        Schema::connection('testd')->create('query_builer_tables', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('query_builer_tables');
+        Schema::connection('testd')->dropIfExists('query_builer_tables');
     }
 };
