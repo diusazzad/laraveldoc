@@ -1,45 +1,18 @@
 <?php
 
 use App\Http\Controllers\database\queryBuilder;
+use App\Http\Controllers\RoutingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+Route::get('/redirectRoutes', [RoutingController::class, 'redirectRoutes']);
+Route::get('/user/{user_id}', [RoutingController::class, 'requiredParameters']);
+// optional Routes
+Route::get('/user/{name?}', [RoutingController::class, 'optionalParameter']);
+Route::get('/search/{category?}/{keyword?}', [RoutingController::class, 'multipleOptionalParameter']);
 
-// Route::get('/database/all-rows', [queryBuilder::class, 'index'])->name('database.querybuilder.allRowsFromATable');
-// Route::get('/database/single-row', [queryBuilder::class, 'singleRowFromATable'])->name('database.querybuilder.singleRowColumnFromATable');
-
-// Route::get('/database', [queryBuilder::class, 'showData'])->name('database.querybuilder.showData');
-
-Route::get('/database/{type}', [queryBuilder::class, 'getData'])
-    ->name('database.querybuilder.getData')
-    ->where('type', 'all-rows|single-row|column-values');
-
-Route::get('/database/chunking-results', [queryBuilder::class, 'chunkingResults'])
-    ->name('database.chunkingResults');
-
-//  Streaming Results Lazily
-Route::get('/database/export-users-csv', [QueryBuilderController::class, 'exportUsersToCsv'])
-    ->name('database.exportUsersToCsv');
-// Aggregates
-Route::get('/database/aggregates', [queryBuilder::class,'aggregates'])->name('database.aggregates');
-
-
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
